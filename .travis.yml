@@ -1,4 +1,7 @@
 language: c
+compiler:
+    - gcc
+    - clang
 script: gcc -Wall -Werror test.c
 
 notifications:
