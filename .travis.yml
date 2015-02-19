@@ -1,2 +1,5 @@
 language: c
 script: gcc -Wall -Werror test.c
+
+notifications:
+    webhooks: http://barosl.com:7942/travis
