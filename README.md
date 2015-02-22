@@ -75,7 +75,7 @@ pyvenv .venv
 
  - Buildbot
 
-   Insert the following code to the `master.cfg` file:
+  Insert the following code to the `master.cfg` file:
 
     ```python
     from buildbot.status.status_push import HttpStatusPush
