@@ -65,13 +65,17 @@ pyvenv .venv
 
 1. Copy `cfg.sample.toml` to `cfg.toml`, and edit it accordingly.
 
-2. Add a Webhook to your repository:
+2. Create a GitHub account that will be used by Homu. You can also use the
+   existing account. In the account settings, register a new application and
+   generate a new access token.
+
+3. Add a Webhook to your repository:
 
  - Payload URL: `http://HOST:PORT/github`
  - Content type: `application/json`
  - Secret: The same as `repo.NAME.github.secret` in cfg.toml
 
-3. Add a Webhook to your continuous integration service:
+4. Add a Webhook to your continuous integration service:
 
  - Buildbot
 
@@ -97,7 +101,6 @@ pyvenv .venv
     branches:
         only:
             - auto
-            - try
     ```
 
 ### How to run
