@@ -5,17 +5,17 @@
 Homu is a bot that integrates GitHub and your favorite continuous integration
 service, such as [Buildbot] or [Travis CI].
 
-[Hommando]: https://i.imgur.com/4RfmXP9.png
+[Hommando]: https://i.imgur.com/j0jNvHF.png
 [Akemi Homura]: https://wiki.puella-magi.net/Homura_Akemi
 [Buildbot]: http://buildbot.net/
 [Travis CI]: https://travis-ci.org/
 
 ## Why is it needed?
 
-Let's consider Travis CI as an example. If you send a pull request to a
-repository, Travis CI instantly shows you the test result, which is great.
-However, after several other pull requests are merged into the `master` branch,
-your pull request can *still* break things after being merged into `master`. The
+Let's take Travis CI as an example. If you send a pull request to a repository,
+Travis CI instantly shows you the test result, which is great. However, after
+several other pull requests are merged into the `master` branch, your pull
+request can *still* break things after being merged into `master`. The
 traditional continuous integration solutions don't protect you from this.
 
 In fact, that's why they provide the build status badges. If anything pushed to
@@ -23,14 +23,15 @@ In fact, that's why they provide the build status badges. If anything pushed to
 themselves prove that there can still be some breakages, even when continuous
 integration services are used.
 
-To solve this problem, the test procedure should be executed *just before* the
-merge, not after a pull request is received. Homu automates this process. It
-listens to the pull request comments, waiting for an approval from one of the
-reviewers. When the pull request is approved, Homu tests it using your favorite
-continuous integration service, and only if it passes the tests, it is merged
-into `master`.
+To solve this problem, the test procedure should be executed *just before the
+merge*, not just after a pull request is received. You can manually click the
+"restart build" button each time before you merge a pull request, but Homu can
+automate this process. It listens to the pull request comments, waiting for an
+approval comment from one of the configured reviewers. When the pull request is
+approved, Homu tests it using your favorite continuous integration service, and
+only when it passes all the tests, it is merged into `master`.
 
-Note that Homu is **not** a replacement of Travis CI, or Buildbot. It works on
+Note that Homu is **not** a replacement of Travis CI or Buildbot. It works on
 top of them. Homu itself doesn't have the ability to test pull requests.
 
 ## Influences of bors
