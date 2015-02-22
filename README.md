@@ -65,7 +65,16 @@ support.
 sudo apt-get install python3-venv
 
 pyvenv .venv
-.venv/bin/pip install -e .
+. .venv/bin/activate
+
+# Stable version
+
+pip install homu
+
+# Development version
+
+git clone https://github.com/barosl/homu.git
+pip install -e homu
 ```
 
 ### How to configure
@@ -113,5 +122,7 @@ pyvenv .venv
 ### How to run
 
 ```sh
-.venv/bin/homu
+. .venv/bin/activate
+
+homu
 ```
