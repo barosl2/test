@@ -9,28 +9,29 @@ largely inspired by [bors](https://github.com/graydon/bors).
 ## Why is it needed?
 
 Let's consider Travis CI as an example. If you send a pull request to a
-repository, Travis CI automatically shows you the test result, which is great.
+repository, Travis CI instantly shows you the test result, which is great.
 However, after several other pull requests are merged into the `master` branch,
 your pull request can *still* break things after being merged into `master`. The
 traditional continuous integration solutions don't protect you from this.
 
 In fact, that's why they provide the build status badges. If anything pushed to
-`master` is free from breakage, the badges are **not** necessary. The existence
-of them proves that there can still be some breakages, even if you use a
-continuous integration service.
+`master` is free from breakage, the badges are **not** necessary. The badges
+themselves prove that there can still be some breakages, even when continuous
+integration services are used.
 
-To solve this problem, the test procedure should be executed just before the
+To solve this problem, the test procedure should be executed *just before* the
 merge, not after a pull request is received. Homu automates this process. It
-listens to the pull request comments, waiting for an approval from the
+listens to the pull request comments, waiting for an approval from one of the
 reviewers. When the pull request is approved, Homu tests it using your favorite
-continuous integration service, and merges it into `master`.
+continuous integration service, and only if it passes the tests, it is merged
+into `master`.
 
 Note that Homu is **not** a replacement of Travis CI, or Buildbot. It works on
 top of them. Homu itself doesn't have the ability to test pull requests.
 
 ## Influences of bors
 
-Homu is basically a rewrite of bors, which shares the same concept that a test
+Homu is basically a rewrite of bors, which shares the same concept that tests
 should be done just before the merge. However, there are also some differences:
 
 1. **Stateful**. Unlike bors, which intends to be stateless, Homu is stateful.
@@ -46,7 +47,7 @@ should be done just before the merge. However, there are also some differences:
    feature. This approach improves the overall performance and the response
    time, because the bot is informed about the status changes immediately.
 
-And more features, such as the Travis CI support.
+And also, Homu has more features, such as Travis CI support.
 
 ## Installation
 
