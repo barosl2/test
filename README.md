@@ -90,14 +90,14 @@ c['status'].append(HttpStatusPush(
 
   Insert the following code to the `.travis.yml` file:
 
-  ```yaml
-notifications:
-    webhooks: http://HOST:PORT/travis
+ ```yaml
+    notifications:
+        webhooks: http://HOST:PORT/travis
 
-branches:
-    only:
-        - auto
-        - try
+    branches:
+        only:
+            - auto
+            - try
 ```
 
 ### How to run
