@@ -1,10 +1,14 @@
 # Homu
 
-[![Hommando](https://i.imgur.com/4RfmXP9.png)](https://wiki.puella-magi.net/Homura_Akemi)
+[![Hommando]][Akemi Homura]
 
-Homu is a continuous integration service bot that works with GitHub and
-[Buildbot](http://buildbot.net/), or [Travis CI](https://travis-ci.org/). It is
-largely inspired by [bors](https://github.com/graydon/bors).
+Homu is a bot that integrates GitHub and your favorite continuous integration
+service, such as [Buildbot] or [Travis CI].
+
+[Hommando]: https://i.imgur.com/4RfmXP9.png
+[Akemi Homura]: https://wiki.puella-magi.net/Homura_Akemi
+[Buildbot]: http://buildbot.net/
+[Travis CI]: https://travis-ci.org/
 
 ## Why is it needed?
 
@@ -31,24 +35,26 @@ top of them. Homu itself doesn't have the ability to test pull requests.
 
 ## Influences of bors
 
-Homu is basically a rewrite of bors, which shares the same concept that tests
-should be done just before the merge. However, there are also some differences:
+Homu is largely inspired by [bors]. The concept of "tests should be done just
+before the merge" came from bors. However, there are also some differences:
 
-1. Stateful: Unlike bors, which intends to be stateless, Homu is stateful.
-   It means that Homu does not need to retrieve all the information again and
-   again from GitHub at every run. This is essential because of the GitHub's
-   rate limiting. Once it downloads the initial state, the following changes
-   are delivered with the [Webhooks](https://developer.github.com/webhooks/)
-   API.
+1. Stateful: Unlike bors, which intends to be stateless, Homu is stateful. It
+   means that Homu does not need to retrieve all the information again and again
+   from GitHub at every run. This is essential because of the GitHub's rate
+   limiting. Once it downloads the initial state, the following changes are
+   delivered with the [Webhooks] API.
 2. Pushing over polling: Homu prefers pushing wherever possible. The pull
-   requests from GitHub are retrieved using Webhooks, as stated above. The
-   test results from Buildbot are pushed back to Homu with the
-   [HttpStatusPush](http://docs.buildbot.net/current/manual/cfg-statustargets.html#httpstatuspush)
+   requests from GitHub are retrieved using Webhooks, as stated above. The test
+   results from Buildbot are pushed back to Homu with the [HttpStatusPush]
    feature. This approach improves the overall performance and the response
    time, because the bot is informed about the status changes immediately.
 
-And also, Homu has more features, such as `rollup`, `try`, and Travis CI
+And also, Homu has more features, such as `rollup`, `try`, and the Travis CI
 support.
+
+[bors]: https://github.com/graydon/bors
+[Webhooks]: https://developer.github.com/webhooks/
+[HttpStatusPush]: http://docs.buildbot.net/current/manual/cfg-statustargets.html#httpstatuspush
 
 ## Usage
 
