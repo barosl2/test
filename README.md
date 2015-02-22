@@ -77,13 +77,13 @@ pyvenv .venv
 
   Insert the following code to the `master.cfg` file:
 
-  ```python
-    from buildbot.status.status_push import HttpStatusPush
+```python
+from buildbot.status.status_push import HttpStatusPush
 
-    c['status'].append(HttpStatusPush(
-        serverUrl='http://HOST:PORT/buildbot',
-        extra_post_params={'secret': 'repo.NAME.buildbot.secret in cfg.toml'},
-    ))
+c['status'].append(HttpStatusPush(
+    serverUrl='http://HOST:PORT/buildbot',
+    extra_post_params={'secret': 'repo.NAME.buildbot.secret in cfg.toml'},
+))
 ```
 
  - Travis CI
