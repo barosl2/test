@@ -77,7 +77,7 @@ pyvenv .venv
 
   Insert the following code to the `master.cfg` file:
 
- ```python
+  ```python
 from buildbot.status.status_push import HttpStatusPush
 
 c['status'].append(HttpStatusPush(
@@ -90,7 +90,7 @@ c['status'].append(HttpStatusPush(
 
   Insert the following code to the `.travis.yml` file:
 
- ```yaml
+  ```yaml
     notifications:
         webhooks: http://HOST:PORT/travis
 
