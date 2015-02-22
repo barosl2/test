@@ -34,24 +34,25 @@ top of them. Homu itself doesn't have the ability to test pull requests.
 Homu is basically a rewrite of bors, which shares the same concept that tests
 should be done just before the merge. However, there are also some differences:
 
-1. **Stateful**. Unlike bors, which intends to be stateless, Homu is stateful.
+1. Stateful: Unlike bors, which intends to be stateless, Homu is stateful.
    It means that Homu does not need to retrieve all the information again and
    again from GitHub at every run. This is essential because of the GitHub's
    rate limiting. Once it downloads the initial state, the following changes
    are delivered with the [Webhooks](https://developer.github.com/webhooks/)
    API.
-2. **Pushing over polling**. Homu prefers pushing wherever possible. The pull
+2. Pushing over polling: Homu prefers pushing wherever possible. The pull
    requests from GitHub are retrieved using Webhooks, as stated above. The
    test results from Buildbot are pushed back to Homu with the
    [HttpStatusPush](http://docs.buildbot.net/current/manual/cfg-statustargets.html#httpstatuspush)
    feature. This approach improves the overall performance and the response
    time, because the bot is informed about the status changes immediately.
 
-And also, Homu has more features, such as Travis CI support.
+And also, Homu has more features, such as `rollup`, `try`, and Travis CI
+support.
 
-## Installation
+## Usage
 
-### How to download
+### How to install
 
 ```sh
 sudo apt-get install python3-venv
@@ -77,12 +78,12 @@ pyvenv .venv
   Insert the following code to the `master.cfg` file:
 
   ```python
-from buildbot.status.status_push import HttpStatusPush
+    from buildbot.status.status_push import HttpStatusPush
 
-c['status'].append(HttpStatusPush(
-    serverUrl='http://HOST:PORT/buildbot',
-    extra_post_params={'secret': 'repo.NAME.buildbot.secret in cfg.toml'},
-))
+    c['status'].append(HttpStatusPush(
+        serverUrl='http://HOST:PORT/buildbot',
+        extra_post_params={'secret': 'repo.NAME.buildbot.secret in cfg.toml'},
+    ))
 ```
 
  - Travis CI
